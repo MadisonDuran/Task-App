@@ -64,11 +64,50 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
    // console.log(result.ops)
 //})
 
-db.collection('users').findOne({ _id: "Sc1113239cbfe605241f9071" }, (error, user) => {
-    if (error) {
-        return console.log('Unable to find user')
+//db.collection('users').findOne({ _id: new ObjectID("Sc1113239cbfe605241f9071") }, (error, user) => {
+   // if (error) {
+       // return console.log('Unable to find user')
+   // }
+
+   // console.log(user)
+   //})
+
+//db.collection('users').find({ age: 27 }).toArray((error, users) => {
+   // console.log(users)
+//})
+
+//db.collection('users').find({ age: 27 }).count((error, count) => {
+    //console.log(count)
+//})
+
+//db.collection('tasks').findOne({ _id: new ObjectID("5f8f1113239cbfe605241f907") }, (error, task) => {
+   //console.log(task)
+//})
+
+//db.collection('tasks').find({ completed: false }).toArray((error, tasks) => {
+    //console.log(tasks)
+//})
+
+//db.collection('users').updateOne({
+    //_id: new ObjectID("5c0fe6634362c1fb75b9d6b5")
+//}, {
+    //$inc: {
+   //     age: 1
+   // }
+//}).then((result) => {
+  //  console.log(result)
+//}).catch((error) => {
+   // console.log(error)
+//})
+
+db.collection('tasks').updateMany({
+    completed: false
+}, {
+    $set: {
+        completed: true
     }
-
-    console.log(user)
+}).then((result) => {
+    console.log(result.modifiedCount)
+}).catch((error) => {
+    console.log(error)
 })
-
